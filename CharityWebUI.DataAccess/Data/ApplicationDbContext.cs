@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using CharityWebUI.Models.DbModels;
 
 namespace CharityWebUI.Data
 {
@@ -12,5 +13,7 @@ namespace CharityWebUI.Data
             : base(options)
         {
         }
+
+        public DbSet<Charity> Charities { get; set; }
     }
 }

@@ -63,7 +63,7 @@ namespace CharityWebUI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{area=GeneralAdmin}/{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{area=Guests}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
