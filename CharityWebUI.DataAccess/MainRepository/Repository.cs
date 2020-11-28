@@ -25,6 +25,11 @@ namespace CharityWebUI.DataAccess.MainRepository
             _db.Add(entity);
         }
 
+        //public void Update(T entity)
+        //{
+        //    _db.Update(entity);
+        //}
+
         public T Get(int id)
         {
             return dbSet.Find(id);

@@ -15,5 +15,7 @@ namespace CharityWebUI.Data
         }
 
         public DbSet<Charity> Charities { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+
     }
 }

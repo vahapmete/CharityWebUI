@@ -18,6 +18,7 @@ namespace CharityWebUI.DataAccess.IMainRepository
             string includeProperties = null);
 
         void Add(T entity);
+        //void Update(T entity);
         void Remove(T entity);
         void Remove(int id);
         void RemoveRang(IEnumerable<T> entity);

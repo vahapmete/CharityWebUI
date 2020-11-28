@@ -25,7 +25,6 @@ namespace CharityWebUI.Models.DbModels
         [Required]
         public string  Address { get; set; }
 
-        [Required]
         public int  AdminId { get; set; }
         
     }

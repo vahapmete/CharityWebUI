@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-primary">Charity List </h2>
+    </div>
+    <div class="col-6 text-right">
+        <a class="btn btn-primary text-white" asp-action="Upsert"><i class="fas fa-plus"></i> &nbsp; Add New Charity</a>
+    </div>
+</div>
+
+<br />
+<table id="tblData" class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Charity Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">About</th>
+            <th scope="col">City</th>
+            <th scope="col">Address</th>
+            <th scope="col">Admin Id</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+</table>
+
+@section Scripts
+{
+    <script src="~/js/charity.js"></script>
+}

@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AWJ.EmailProviders" Version="1.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.0" />
@@ -13,16 +14,13 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.0" />
+    <PackageReference Include="Myvas.AspNetCore.Email" Version="2.2.604" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CharityWebUI.DataAccess\CharityWebUI.DataAccess.csproj" />
     <ProjectReference Include="..\CharityWebUI.Models\CharityWebUI.Models.csproj" />
     <ProjectReference Include="..\CharityWebUI.Utility\CharityWebUI.Utility.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\GeneralAdmin\Controllers\" />
   </ItemGroup>
 
 </Project>

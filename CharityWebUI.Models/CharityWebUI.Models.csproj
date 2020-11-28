@@ -8,4 +8,11 @@
     <Folder Include="ViewModels\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AWJ.EmailProviders" Version="1.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.0" />
+    <PackageReference Include="Myvas.AspNetCore.Email" Version="2.2.604" />
+  </ItemGroup>
+
 </Project>

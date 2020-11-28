@@ -1,17 +1,16 @@
 using CharityWebUI.Data;
+using CharityWebUI.DataAccess.IMainRepository;
+using CharityWebUI.DataAccess.MainRepository;
+using CharityWebUI.Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using IEmailSender = Myvas.AspNetCore.Email.IEmailSender;
 
 namespace CharityWebUI
 {
@@ -31,10 +30,15 @@ namespace CharityWebUI
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
+            
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser,IdentityRole>().AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped <IUnitOfWork,UnitOfWork>();
+            services.AddSingleton<IEmailSender, EmailSender>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddRazorPages();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,7 +67,7 @@ namespace CharityWebUI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{area=Guests}/{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{area=GeneralAdmin}/{controller=Charity}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

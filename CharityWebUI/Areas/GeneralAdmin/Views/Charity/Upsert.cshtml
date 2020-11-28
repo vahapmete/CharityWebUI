@@ -1,0 +1,91 @@
+﻿@model CharityWebUI.Models.DbModels.Charity
+@{
+    ViewData["Title"] = "Upsert";
+    var title = "Add Charity";
+}
+
+<form method="post">
+    <div class="row p-3 border">
+        @if (Model.Id != 0)
+        {
+            title = "Update Charity";
+        }
+        <div class="col-12">
+            <h2>@title</h2>
+        </div>
+
+        <div class="col-8 pt-4">
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Email"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="About"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="About" class="form-control" />
+                    <span asp-validation-for="About"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="City"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Address"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="AdminId"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="AdminId" class="form-control" />
+                    <span asp-validation-for="AdminId"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-8 offset-4">
+                    @if (Model.Id > 0)
+                    {
+                        <partial name="_EditOrBackToListButton" model="Model.Id" />
+                    }
+                    else
+                    {
+                        <partial name="_AddOrBackToListButton" model="Model.Id" />
+                    }
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</form>
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}
