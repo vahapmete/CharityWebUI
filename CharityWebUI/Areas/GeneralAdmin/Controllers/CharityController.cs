@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CharityWebUI.DataAccess.IMainRepository;
 using CharityWebUI.Models.DbModels;
+using CharityWebUI.Models.ViewModels;
 
 namespace CharityWebUI.Areas.GeneralAdmin.Controllers
 {
@@ -26,16 +27,27 @@ namespace CharityWebUI.Areas.GeneralAdmin.Controllers
         #region ACTIONS
         public IActionResult Index()
         {
-            return View();
+            var model = new CharityViewModel
+            {
+                Charities = _uow.Charity.GetAll(),
+                ApplicationUsers = _uow.ApplicationUser.GetAll()
+            };
+            return View(model);
+    
         } 
         #endregion
 
         #region API CALLS
-        public IActionResult GetAll()
-        {
-            var allObj = _uow.Charity.GetAll();
-            return Json(new { data = allObj });
-        }
+        //public IActionResult GetAll()
+        //{
+            
+
+
+
+
+        //    var allObj = _uow.Charity.GetAll();
+        //    return Json(new { data = allObj });
+        //}
 
         public IActionResult Delete(int id)
         {

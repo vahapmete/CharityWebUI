@@ -1,22 +1,99 @@
-﻿
+﻿@using CharityWebUI.Models.DbModels
+@model CharityWebUI.Models.ViewModels.CharityViewModel
 @{
     ViewData["Title"] = "Index";
 }
+<div class="bg-white col-12" style="padding: 30px 30px 30px 30px; border-radius: 5px 5px 5px 5px; ">
+    <div class="row border-bottom" style="margin-bottom: 30px; ">
+        <div class="col-3">
+            <h1 class="text-black">Charities </h1>
+        </div>
+        <div class=" col-9 text-right" style="margin-bottom: 20px;">
+            <a class="btn btn-success text-white" asp-action="Upsert" style="border-radius:20px; cursor: pointer; padding: 7px 15px 7px 15px;"><img src="~/images/icons/add (3).png" style="width: 17px; height: 17px; margin-right: 10px; " />Add Charity</a>
+        </div>
+    </div>
+    <br />
+    <div class=" row p-1 bg-white  shadow-sm mb-4 col-8 " style="border-radius: 5px;box-shadow:lavender  2px 2px 3px 2px  !important; margin: auto;  ">
+        <div class="input-group ">
+            <input type="search" placeholder="Search Charity..." class="form-control border-0 bg-white">
+            <div class="input-group-append">
+                <button id="button-addon1" type="submit" class="btn btn-link text-dark"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table @*id="tblData"*@ class="col-12 table  " style="margin-top: 20px;">
+            <thead>
+                <tr>
+                    <td class="text-muted " style="width:15%">Name</td>
+                    <td class="text-muted text-center" style="width:35%; ">About</td>
+                    <td class="text-muted text-center" style="width:15%; ">City</td>
+                    <td class="text-muted text-center" style="width:15%; ">Email</td>
+                    <td class="text-muted text-center" style="width:15%; ">Admin Id</td>
+                    <td class="text-muted text-center" style="width:15%; ; @*padding: 13px 0px 13px 80px !important;*@">Actions</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var charity in Model.Charities)
+                {
+                <tr>
+                    <th class=" p-t-5 text-muted">@charity.Name</th>
+                    <td class="text-center p-t-5 ">
+                        <div class="input-group">
+                            <textarea style="height:150px;" class="form-control" aria-label="With textarea">@charity.About</textarea>
+                        </div>
+                    </td>
+                    <td class="text-center p-t-5 ">@charity.City</td>
+                    <td class="text-center p-t-5 ">@charity.Email</td>
+                    @foreach (var admin in Model.ApplicationUsers)
+                    {
+                        <td class="text-center p-t-5 ">@admin.NameSurname</td>
+                    }
+
+                    <td style="height:100px;">
+                        <a asp-controller="Charity" asp-action="Upsert" asp-route-id="@charity.Id"
+                           class=" btn btn-warning text-white" style="border-radius: 20px; cursor: pointer; padding: 4px 15px 4px 15px;">Update</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Charity" asp-action="Delete" asp-route-id="@charity.Id"
+                           class="btn btn-danger text-white" style="border-radius: 20px; cursor: pointer; padding: 4px 20px 4px 20px;">Delete</a>
+                    </td>
+
+                </tr>
+
+                }
+
+            </tbody>
+        </table>
+    </div>
 
 
-<br />
-<div class="row">
-    <div class="col-6">
-        <h2 class="text-primary">Charity List </h2>
-    </div>
-    <div class="col-6 text-right">
-        <a class="btn btn-primary text-white" asp-action="Upsert"><i class="fas fa-plus"></i> &nbsp; Add New Charity</a>
-    </div>
 </div>
 
-<br />
-<table id="tblData" class="table table-striped">
-    <thead>
+
+
+@*<div class="row">
+        <div class="col-3">
+            <h2 class="text-primary">Charity List </h2>
+        </div>
+        <div class="col-7 text-right">
+            <a class="btn btn-primary text-white" asp-action="Upsert"><i class="fas fa-plus"></i> &nbsp; Add Charity</a>
+        </div>
+    </div>
+
+    <br />
+    <table id="tblData" class=" col-10 table table-striped">
+        <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+            <div class="input-group">
+                <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                <div class="input-group-append">
+                    <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <thead class="border-bottom">
         <tr>
             <th scope="col">Charity Name</th>
             <th scope="col">Email</th>
@@ -26,10 +103,10 @@
             <th scope="col">Admin Id</th>
             <th>Action</th>
         </tr>
-    </thead>
-</table>
+        </thead>
+    </table>*@
 
-@section Scripts
-{
-    <script src="~/js/charity.js"></script>
-}
+@*@section Scripts
+    {
+        <script src="~/js/charity.js"></script>
+    }*@
